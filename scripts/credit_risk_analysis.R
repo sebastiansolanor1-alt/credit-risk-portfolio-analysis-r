@@ -45,6 +45,10 @@ dir.create(outputs_path, showWarnings = FALSE)
 # 3. LOAD DATA
 # =========================================
 
+if (!file.exists(data_path)) {
+  stop("Dataset not found. Please place credit_risk_dataset.csv inside the data/ folder.")
+}
+
 credit <- read_csv(
   data_path,
   show_col_types = FALSE
@@ -225,3 +229,4 @@ cat("====================================\n")
 
 getwd()
 ls()
+
