@@ -39,6 +39,10 @@ Note:
 
 ## Dataset
 
+Source: https://gist.github.com/eversonm/3d2b3cf0cd4b3c93f906377bba8f989c
+
+Note: This dataset is publicly available and commonly used for educational purposes in credit risk modeling and data analysis projects.
+
 The dataset contains borrower and loan characteristics, including:
 
 - Borrower age
