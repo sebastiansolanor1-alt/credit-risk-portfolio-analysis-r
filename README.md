@@ -161,4 +161,5 @@ This project is licensed under the **MIT License**.
 ## Author
 
 Sebastian Solano  
-Data Analytics Portfolio Project
+
+*Economist & Data Analyst* [LinkedIn](https://www.linkedin.com/in/sebastian-solanor1/) | [Portfolio](https://github.com/sebastian-solanor1)
