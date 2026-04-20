@@ -1,154 +1,173 @@
 # Credit Risk Portfolio Analysis (R)
 
-End-to-end credit risk portfolio analysis using **R**.  
+End-to-end credit risk portfolio analysis using **R**.
+
 This project demonstrates data cleaning, feature engineering, KPI development, and risk segmentation for a consumer lending portfolio.
 
-The goal is to simulate a simplified **credit risk analysis workflow** similar to what a data analyst might perform in a financial institution.
+The goal is to simulate a simplified credit risk analysis workflow similar to what a data analyst might perform in a financial institution.
+
+---
+
+## Project Overview
+
+This analysis focuses on identifying patterns associated with loan default risk using borrower and loan-level data.
+
+The workflow includes:
+
+- Data cleaning and preprocessing  
+- Feature engineering (risk indicators)  
+- Portfolio KPI development  
+- Risk segmentation  
+- Data visualization  
+- Reproducible analysis pipeline  
+
+---
+
+## Tools & Libraries
+
+- `tidyverse` – data manipulation and visualization  
+- `janitor` – data cleaning  
+- `scales` – percentage formatting  
+- `here` – reproducible file paths  
+- `ggplot2` – visualization  
 
 ---
 
 ## Project Structure
 
+```text
+credit-risk-portfolio-analysis-r/
+│
+├── data/
+│   └── credit_risk_dataset.csv
+│
+├── scripts/
+│   └── credit_risk_analysis.R
+│
+├── figures/
+│   ├── default_rate_by_income.png
+│   └── default_rate_by_lti.png
+│
+├── outputs/
+│   ├── portfolio_kpi.csv
+│   ├── kpi_default_by_income.csv
+│   ├── kpi_default_by_lti.csv
+│   └── missing_values_summary.csv
+│
+├── README.md
+└── LICENSE
 ```
-credit-risk-portfolio-analysis-r
-
-data/
-    Raw dataset used for analysis
-
-scripts/
-    R script containing the full analysis pipeline
-
-figures/
-    Folder where generated visualizations are saved when running the script
-
-outputs/
-    Folder where summary tables and KPIs are exported
-
-README.md
-    Project documentation
-
-LICENSE
-    MIT License
-```
-
-
-Note:  
-`figures` and `outputs` are generated automatically when the script is executed.
 
 ---
 
 ## Dataset
 
-Source: https://gist.github.com/eversonm/3d2b3cf0cd4b3c93f906377bba8f989c
-
-Note: This dataset is publicly available and commonly used for educational purposes in credit risk modeling and data analysis projects.
-
 The dataset contains borrower and loan characteristics, including:
 
-- Borrower age
-- Income
-- Employment length
-- Loan amount
-- Interest rate
-- Loan purpose
-- Loan grade
-- Historical default indicator
+- Income  
+- Loan amount  
+- Employment length  
+- Interest rate  
+- Loan purpose  
+- Loan grade  
+- Loan status (target variable)  
 
 Target variable:
 
-**loan_status**
-
-1 = default
-0 = non-default
-
+- `loan_status` (1 = default, 0 = non-default)
 
 ---
 
-## Analysis Pipeline
+## Data Cleaning & Preparation
 
-The project follows a structured workflow:
+Key preprocessing steps:
 
-### 1. Reproducibility setup
-Ensures consistent results by setting a seed and loading required packages.
-
-### 2. Data loading
-The dataset is loaded and column names are standardized.
-
-### 3. Data quality checks
-Missing values are identified and handled.
-
-### 4. Feature engineering
-New analytical variables are created:
-
-- **Loan-to-Income Ratio**
-- **Income Buckets**
-- **Loan-to-Income Risk Buckets**
-
-### 5. Portfolio KPIs
-Key risk indicators are calculated:
-
-- Total loans
-- Portfolio default rate
-- Default rate by income segment
-- Default rate by debt burden
-
-### 6. Risk segmentation
-Borrowers are segmented based on income and debt levels to identify high-risk segments.
-
-### 7. Visualization
-Graphs are automatically generated to illustrate default patterns across segments.
-
-### 8. Validation
-Basic checks ensure that the analysis runs correctly and produces valid outputs.
+- Handled missing values in employment length  
+- Standardized column names using `janitor::clean_names()`  
+- Converted raw variables into analytical format  
+- Created derived features:
+  - Loan-to-Income Ratio  
+  - Income Buckets  
+  - Risk segmentation variables  
 
 ---
 
-## Example Insights
+## Feature Engineering
 
-The analysis allows us to observe patterns such as:
+New variables were created to improve risk interpretation:
 
-- Higher **loan-to-income ratios** are associated with increased default risk
-- Lower income segments tend to show **higher default rates**
-- Portfolio segmentation can reveal borrower groups with elevated credit risk
+- **Loan-to-Income Ratio (LTI)**  
+- **Income Buckets** (<30K, 30K–60K, etc.)  
+- **LTI Buckets** (<10%, 10–20%, etc.)  
 
-These types of insights are commonly used in **credit portfolio monitoring and risk management**.
+These features help segment borrowers by financial risk exposure.
+
+---
+
+## Key Metrics (KPIs)
+
+Portfolio KPIs were computed using R:
+
+### Core KPIs:
+- Total number of loans  
+- Portfolio default rate  
+- Missing data summary  
+
+### Segment KPIs:
+- Default rate by income group  
+- Default rate by loan-to-income ratio  
+
+---
+
+## Visualizations
+
+### Default Rate by Income Segment
+
+![Default Rate by Income](figures/default_rate_by_income.png)
+
+This chart shows how default risk varies across income groups.
+
+---
+
+### Default Rate by Loan-to-Income Ratio
+
+![Default Rate by LTI](figures/default_rate_by_lti.png)
+
+This chart highlights how higher debt burden increases default probability.
+
+---
+
+## Key Insights
+
+- Default risk increases significantly in lower income segments  
+- Borrowers with higher loan-to-income ratios show higher default rates  
+- Debt burden is a strong predictor of credit risk  
+
+---
+
+## Business Implications
+
+- Income level is a key driver of default risk  
+- Loan-to-income ratio can be used for underwriting decisions  
+- Portfolio segmentation helps identify high-risk borrower groups  
+- These insights support credit risk management and pricing strategies  
 
 ---
 
 ## How to Run the Project
 
-1. Clone the repository
+1. Clone repository  
+2. Open in RStudio  
+3. Run:
 
-
-```
-git clone https://github.com/sebastiansolanor1-alt/credit-risk-portfolio-analysis-r.git
-```
-
-
-2. Open the project in **RStudio**
-
-3. Run the script:
-
-
-```
+```r
 scripts/credit_risk_analysis.R
 ```
 
+4. Outputs will be generated in:
 
-4. The script will automatically generate:
-
-
-```
-figures/
-    default_rate_by_income.png
-    default_rate_by_lti.png
-
-outputs/
-    portfolio_kpi.csv
-    kpi_default_by_income.csv
-    kpi_default_by_lti.csv
-    missing_values_summary.csv
-```
+- `figures/` → visualizations  
+- `outputs/` → KPI tables  
 
 ---
 
