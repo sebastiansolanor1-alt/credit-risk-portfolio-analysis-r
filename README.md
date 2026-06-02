@@ -62,6 +62,10 @@ credit-risk-portfolio-analysis-r/
 
 ## Dataset
 
+Source: https://gist.github.com/eversonm/3d2b3cf0cd4b3c93f906377bba8f989c
+
+Note: This dataset is publicly available and commonly used for educational purposes in credit risk modeling and data analysis projects.
+
 The dataset contains borrower and loan characteristics, including:
 
 - Income  
@@ -168,6 +172,36 @@ scripts/credit_risk_analysis.R
 
 - `figures/` → visualizations  
 - `outputs/` → KPI tables  
+---
+
+## How to Run the Project
+
+1. Clone the repository
+
+
+git clone https://github.com/sebastiansolanor1-alt/credit-risk-portfolio-analysis-r.git
+
+
+2. Open the project in **RStudio**
+
+3. Run the script:
+
+
+scripts/credit_risk_analysis.R
+
+
+4. The script will automatically generate:
+
+
+figures/
+default_rate_by_income.png
+default_rate_by_lti.png
+
+outputs/
+portfolio_kpi.csv
+kpi_default_by_income.csv
+kpi_default_by_lti.csv
+missing_values_summary.csv
 
 ---
 
